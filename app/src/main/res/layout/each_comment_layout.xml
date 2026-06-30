@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/comment_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_icon_iv"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                android:layout_marginTop="@dimen/margin_top_24dp"
+                android:contentDescription="@string/image_description"
+                android:src="@drawable/ic_user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/user_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Maria Luiza"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintStart_toEndOf="@id/user_icon_iv"
+                app:layout_constraintTop_toTopOf="@+id/user_icon_iv" />
+
+
+            <TextView
+                android:id="@+id/date_time_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_end_16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="8h"
+                android:textColor="@color/post_color"
+                android:textSize="@dimen/text_size_11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/user_name_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/user_name_tv" />
+
+            <TextView
+                android:id="@+id/comment_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy"
+                android:textColor="@color/post_color"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintEnd_toStartOf="@+id/date_time_tv"
+                app:layout_constraintStart_toStartOf="@+id/user_name_tv"
+                app:layout_constraintTop_toBottomOf="@+id/user_name_tv" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/like_cl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_8dp"
+                app:layout_constraintEnd_toEndOf="@+id/comment_tv"
+                app:layout_constraintStart_toStartOf="@+id/comment_tv"
+                app:layout_constraintTop_toBottomOf="@+id/comment_tv">
+
+                <ImageView
+                    android:id="@+id/likes_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tick"
+                    app:layout_constraintBottom_toBottomOf="@id/reload_iv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/reload_iv" />
+
+                <TextView
+                    android:id="@+id/likes_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_start_8dp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="247"
+                    android:textColor="@color/likes_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/likes_iv"
+                    app:layout_constraintStart_toEndOf="@id/likes_iv"
+                    app:layout_constraintTop_toTopOf="@id/likes_iv" />
+
+                <ImageView
+                    android:id="@+id/reload_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_start_32dp"
+                    android:layout_marginTop="4dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_reload"
+                    app:layout_constraintStart_toEndOf="@id/likes_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/reply_bar_cl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_start_16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/like_cl"
+                app:layout_constraintStart_toStartOf="@+id/comment_tv"
+                app:layout_constraintTop_toBottomOf="@+id/like_cl"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/reply_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="@string/replies"
+                    android:textColor="@color/likes_color"
+                    android:textSize="@dimen/text_size_13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/reply_view"
+                    android:layout_width="0dp"
+                    android:layout_height="1.5dp"
+                    android:layout_marginStart="@dimen/margin_start_16dp"
+                    android:background="@color/line_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/reply_title_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/reply_title_tv"
+                    app:layout_constraintTop_toTopOf="@+id/reply_title_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/replies_rv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/comment_tv"
+                app:layout_constraintTop_toBottomOf="@+id/reply_bar_cl"
+                tools:itemCount="2"
+                tools:listitem="@layout/each_reply_layout"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="@dimen/margin_bottom_24dp"
+            android:background="@color/line_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comment_cl" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

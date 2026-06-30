@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/map_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="186dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/line_opacity"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/gradient_bg"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/map" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/place_title_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                android:layout_marginEnd="@dimen/margin_start_16dp"
+                android:layout_marginTop="@dimen/margin_top_24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:lineSpacingExtra="1sp"
+                android:text="Noite da pizza"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLines="1"
+                app:layout_constraintEnd_toStartOf="@+id/confirm_iv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/map_cl" />
+
+
+            <ImageView
+                android:id="@+id/confirm_iv"
+                android:layout_width="@dimen/confirm_size"
+                android:layout_height="@dimen/confirm_size"
+                android:layout_marginEnd="@dimen/margin_end_16dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_confirm"
+                app:layout_constraintBottom_toBottomOf="@+id/place_title_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/place_title_tv" />
+
+
+            <TextView
+                android:id="@+id/event_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                android:layout_marginTop="@dimen/margin_bottom_8dp"
+                android:layout_marginEnd="@dimen/margin_end_16dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. "
+                android:textColor="@color/post_color"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintTop_toBottomOf="@id/place_title_tv"
+                app:layout_goneMarginTop="@dimen/margin_top_8dp" />
+
+            <TextView
+                android:id="@+id/event_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                android:layout_marginTop="@dimen/margin_top_24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/events"
+                android:textColor="@color/post_color"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/event_tv" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/posts_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:paddingBottom="@dimen/padding_bottom_90dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/event_title_tv"
+                tools:listitem="@layout/each_event_layout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/back_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_32dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_back_arrow"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/fab_size"
+        app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_fab"
+        app:maxImageSize="@dimen/fab_icon_size"
+        app:tint="@color/icons_grey_color" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_24dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_plus"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/add_fab_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:maxImageSize="@dimen/add_fab_icon_size" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/place_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_start_32dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_news"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/fab_size"
+        app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_fab"
+        app:maxImageSize="@dimen/fab_icon_size"
+        app:tint="@color/icons_grey_color" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

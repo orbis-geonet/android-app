@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/group_nav"
+    app:startDestination="@id/groupListFragment">
+
+    <fragment
+        android:id="@+id/groupListFragment"
+        android:name="com.orbis.orbis.ui.groupsModule.views.GroupListActivity"
+        android:label="GroupListFragment">
+        <action
+            android:id="@+id/action_groupListFragment_to_groupDetailsFragment"
+            app:destination="@id/groupDetailsFragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_createGroupFragment"
+            app:destination="@id/createGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupDetailsFragment"
+        android:name="com.orbis.orbis.ui.groupsModule.views.GroupDetailsActivity"
+        android:label="GroupDetailsFragment">
+        <action
+            android:id="@+id/action_groupDetailsFragment_to_membersListFragment"
+            app:destination="@id/membersListFragment" />
+        <action
+            android:id="@+id/action_groupDetailsFragment_to_ownedPlaceFragment"
+            app:destination="@id/ownedPlaceFragment" />
+        <argument
+            android:name="groupDetails"
+            app:argType="com.orbis.orbis.models.group.GroupDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/membersListFragment"
+        android:name="com.orbis.orbis.ui.groupsModule.views.MembersListFragment"
+        android:label="MembersListFragment">
+        <argument android:name="groupKey" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownedPlaceFragment"
+        android:name="com.orbis.orbis.ui.groupsModule.views.OwnedPlaceFragment"
+        android:label="OwnedPlaceFragment">
+        <argument
+            android:name="groupKey"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGroupFragment"
+        android:name="com.orbis.orbis.ui.groupsModule.views.CreateGroupActivity"
+        android:label="CreateGroupFragment">
+        <action
+            android:id="@+id/action_createGroupFragment_to_groupDetailsFragment"
+            app:destination="@id/groupDetailsFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.orbis.orbis.models.group.CreateGroupBody" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loader"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="8dp"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loader.json"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            app:lottie_loop="true" />
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="64dp"
+            android:isScrollContainer="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="32dp">
+
+                <ImageView
+                    android:id="@+id/addImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="1dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/select_image_iv"
+                    app:layout_constraintEnd_toEndOf="@+id/select_image_iv"
+                    app:srcCompat="@drawable/ic_black_add" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/select_image_iv"
+                    android:layout_width="@dimen/camera_size"
+                    android:layout_height="@dimen/camera_size"
+                    android:background="@drawable/bg_round_grey"
+                    android:contentDescription="@string/image_description"
+                    android:padding="@dimen/padding_6dp"
+                    app:civ_border_width="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/check_in_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_start_16dp"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/choose_color"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/select_image_iv" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/colors_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:clipToPadding="false"
+                    android:paddingStart="@dimen/padding_16dp"
+                    android:paddingTop="@dimen/margin_top_8dp"
+                    android:paddingEnd="@dimen/padding_16dp"
+                    android:paddingBottom="@dimen/margin_bottom_8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/check_in_name_tv"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/each_color_item" />
+
+                <EditText
+                    android:id="@+id/group_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/enter_group_name"
+                    android:inputType="text"
+                    android:padding="@dimen/padding_16dp"
+                    android:paddingTop="@dimen/radius_5dp"
+                    android:scrollHorizontally="true"
+                    android:text="@={data.name}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/colors_rv" />
+
+
+                <TextView
+                    android:id="@+id/url_group_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="https//orbis.social/g/"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/group_name_et"
+                    app:layout_constraintStart_toStartOf="@+id/group_name_et"
+                    app:layout_constraintTop_toBottomOf="@+id/group_name_et"
+                    tools:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/about_group_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/type_group_description"
+                    android:inputType="textMultiLine"
+                    android:minLines="5"
+                    android:padding="@dimen/padding_16dp"
+                    android:paddingTop="@dimen/radius_5dp"
+                    android:text="@={data.description}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/group_name_et"
+                    app:layout_constraintStart_toStartOf="@+id/group_name_et"
+                    app:layout_constraintTop_toBottomOf="@+id/url_group_tv" />
+
+                <Button
+                    android:id="@+id/updateGroup"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/black_btn"
+                    android:clickable="@{!loading}"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/update_group"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/about_group_et"
+                    app:layout_constraintStart_toStartOf="@+id/about_group_et"
+                    app:layout_constraintTop_toBottomOf="@+id/about_group_et" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

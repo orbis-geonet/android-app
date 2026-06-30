@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center|top"
+            android:background="@drawable/bottom_sheet_bg">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="130dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/radius_10dp"
+                android:background="@color/black"
+                android:layout_gravity="center"/>
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_8dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="@string/sunday"/>
+
+                    <TextView
+                        android:id="@+id/day1StartTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="-"/>
+
+                    <TextView
+                        android:id="@+id/day1EndTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="@string/monday"/>
+
+                    <TextView
+                        android:id="@+id/day2StartTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="-"/>
+
+                    <TextView
+                        android:id="@+id/day2EndTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="@string/tuesday"/>
+
+                    <TextView
+                        android:id="@+id/day3StartTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="-"/>
+
+                    <TextView
+                        android:id="@+id/day3EndTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="@string/wednesday"/>
+
+                    <TextView
+                        android:id="@+id/day4StartTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="-"/>
+
+                    <TextView
+                        android:id="@+id/day4EndTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="@string/thursday"/>
+
+                    <TextView
+                        android:id="@+id/day5StartTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="-"/>
+
+                    <TextView
+                        android:id="@+id/day5EndTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="@string/friday"/>
+
+                    <TextView
+                        android:id="@+id/day6StartTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="-"/>
+
+                    <TextView
+                        android:id="@+id/day6EndTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="@string/saturday"/>
+
+                    <TextView
+                        android:id="@+id/day7StartTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="@color/black"
+                        android:text="-"/>
+
+                    <TextView
+                        android:id="@+id/day7EndTextView"
+                        android:layout_width="60dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:background="@drawable/bg_edit_text"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/updateButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/black_btn"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/update_opening_hours"
+                    android:textAllCaps="false"
+                    android:enabled="@{!loading}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/black"/>
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loader12"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:elevation="8dp"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loader.json"
+            app:lottie_loop="true" />
+
+    </FrameLayout>
+
+</layout>

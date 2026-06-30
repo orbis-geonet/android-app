@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_16dp">
+
+            <RelativeLayout
+                android:id="@+id/manage_my_groups_admin_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/groups_drop_down_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_top_16dp"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_drop_down" />
+
+                <TextView
+                    android:id="@+id/manage_my_groups_admin_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/manage_my_groups_admin"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="@dimen/text_size_16sp"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/group_admin_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_24dp"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                tools:itemCount="2"
+                tools:listitem="@layout/each_group_row_layout" />
+
+            <RelativeLayout
+                android:id="@+id/places_you_follow_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_24dp">
+
+                <ImageView
+                    android:id="@+id/places_drop_down_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_top_16dp"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_drop_down" />
+
+                <TextView
+                    android:id="@+id/places_you_follow_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/places_you_follow"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="@dimen/text_size_16sp"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/account_privacy_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/account_privacy"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <RelativeLayout
+                android:id="@+id/account_privacy_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_16dp">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/account_privacy_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/radius_20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_end_16dp"
+                    android:checked="false"
+                    android:contentDescription="@string/image_description"
+                    android:thumb="@drawable/switch_thumb"
+                    android:track="@drawable/switch_track" />
+
+                <TextView
+                    android:id="@+id/make_account_privacy_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/make_my_account_private"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/my_subscriptions_rl"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_24dp">
+
+                <ImageView
+                    android:id="@+id/my_subscriptions_drop_down_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_top_16dp"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_drop_down" />
+
+                <TextView
+                    android:id="@+id/my_subscriptions_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/my_subscriptions"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="@dimen/text_size_16sp"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/subscriptions_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_subscription_profile" />
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

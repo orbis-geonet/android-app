@@ -1,0 +1,13 @@
+## This file must *NOT* be checked into Version Control Systems,
+# as it contains information specific to your local configuration.
+#
+# Location of the SDK. This is only used by Gradle.
+# For customization when using a Version Control System, please read the
+# header note.
+
+sdk.dir=/home/user/Android/Sdk
+BASE_DEBUG_URL=https://your-node-name.orbis.network
+BASE_PROD_URL=https://orbisv2-production.uc.r.appspot.com
+X-API-KEY=clone-generated-api-key
+MAPS_DEBUG_API_KEY=AIza****
+MAPS_PROD_API_KEY=AIza****

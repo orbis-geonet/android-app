@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_id"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:backgroundTint="@color/color2"
+    android:clipToPadding="false">
+
+    <com.orbis.orbis.utils.customViews.RoundLinerLayoutNormal
+        android:id="@+id/shadow_circle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rll_elevation="@dimen/elevation_6dp"
+        app:rll_shadow_bkg_color="@color/white"
+        app:rll_shadow_color="@color/black"
+        app:rll_shadow_radius="25dp">
+
+        <com.orbis.orbis.utils.customViews.RoundLinerLayoutNormal
+            android:id="@+id/inner_circle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rll_elevation="@dimen/elevation_4dp"
+            app:rll_shadow_bkg_color="@color/black"
+            app:rll_shadow_radius="25dp" />
+
+    </com.orbis.orbis.utils.customViews.RoundLinerLayoutNormal>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

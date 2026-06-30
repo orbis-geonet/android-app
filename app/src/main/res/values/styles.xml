@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SystemToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">#00000000</item>
+    </style>
+
+
+    <style name="tabsStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textColor">@color/hint_color</item>
+        <item name="fontFamily">@font/roboto_black</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="MyTitleStyle" parent="android:Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="fontFamily">@font/roboto_black</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_size_29sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

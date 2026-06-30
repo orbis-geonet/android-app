@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.orbis.orbis.utils.customViews.CustomTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/tab_layout_height"
+            android:layout_marginTop="@dimen/margin_top_8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabBackground="@drawable/tab_layout_selector"
+            app:tabGravity="fill"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="@color/black"
+            app:tabIndicatorHeight="@dimen/tab_indicator_height"
+            app:tabMaxWidth="0dp"
+            app:tabMode="fixed"
+            app:tabPadding="8dp"
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextAppearance="@style/tabsStyle" />
+
+        <com.orbis.orbis.utils.customViews.CustomViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom_24dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/floatingactionbuttondescription"
+            android:src="@drawable/ic_plus"
+            app:borderWidth="@dimen/_0dp"
+            app:fabCustomSize="@dimen/add_fab_size"
+            app:elevation="@dimen/elevation_5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:maxImageSize="@dimen/add_fab_icon_size" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/back_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_32dp"
+            android:backgroundTint="@color/white"
+            app:tint="@color/icons_grey_color"
+            android:contentDescription="@string/floatingactionbuttondescription"
+            android:src="@drawable/ic_back_arrow"
+            app:borderWidth="@dimen/_0dp"
+            app:fabCustomSize="@dimen/fab_size"
+            app:elevation="@dimen/elevation_5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/add_fab"
+            app:maxImageSize="@dimen/fab_icon_size" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_start_32dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/floatingactionbuttondescription"
+            android:src="@drawable/ic_logotipo"
+            app:borderWidth="@dimen/_0dp"
+            app:fabCustomSize="@dimen/fab_size"
+            app:elevation="@dimen/elevation_5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/add_fab"
+            app:maxImageSize="@dimen/fab_icon_size" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

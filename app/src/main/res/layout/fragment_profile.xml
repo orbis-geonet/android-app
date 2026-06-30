@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="data"
+            type="com.orbis.orbis.models.auth.UserInfo" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loader16"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="false"
+            android:elevation="8dp"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loader.json"
+            app:lottie_loop="true" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/top_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:elevation="0dp">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:backgroundTint="@color/white"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    android:contentInsetEnd="0dp"
+                    android:contentInsetRight="0dp"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetStart="0dp"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/user_pic_iv"
+                            android:layout_width="76dp"
+                            android:layout_height="76dp"
+                            android:layout_marginStart="@dimen/margin_start_16dp"
+                            android:layout_marginTop="@dimen/margin_start_32dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_user"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/user_name_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="28dp"
+                            android:layout_marginTop="@dimen/margin_top_32dp"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@{data.displayName}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16sp"
+                            app:layout_constraintStart_toEndOf="@id/user_pic_iv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/settings_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_top_16dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_menu"
+                            app:layout_constraintBottom_toBottomOf="@id/user_name_tv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/user_name_tv" />
+
+                        <TextView
+                            android:id="@+id/group_count_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{@string/numberPlaceHolder(data.followedGroups)}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16sp"
+                            app:layout_constraintBottom_toBottomOf="@id/following_tv"
+                            app:layout_constraintEnd_toEndOf="@id/groups_title"
+                            app:layout_constraintStart_toStartOf="@id/groups_title"
+                            app:layout_constraintTop_toTopOf="@id/following_tv" />
+
+                        <TextView
+                            android:id="@+id/groups_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/groups"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_12sp"
+                            app:layout_constraintBottom_toBottomOf="@id/user_pic_iv"
+                            app:layout_constraintStart_toStartOf="@id/user_name_tv" />
+
+                        <TextView
+                            android:id="@+id/followers_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{@string/numberPlaceHolder(data.totalFollowers)}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16sp"
+                            app:layout_constraintBottom_toBottomOf="@id/following_tv"
+                            app:layout_constraintEnd_toEndOf="@+id/followers_title"
+                            app:layout_constraintStart_toStartOf="@+id/followers_title" />
+
+                        <TextView
+                            android:id="@+id/followers_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/followers"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/groups_title"
+                            app:layout_constraintEnd_toStartOf="@+id/following_title"
+                            app:layout_constraintStart_toEndOf="@id/groups_title" />
+
+
+                        <TextView
+                            android:id="@+id/following_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{@string/numberPlaceHolder(data.totalFollowing)}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16sp"
+                            app:layout_constraintBottom_toTopOf="@id/following_title"
+                            app:layout_constraintEnd_toEndOf="@id/following_title"
+                            app:layout_constraintStart_toStartOf="@id/following_title" />
+
+
+                        <TextView
+                            android:id="@+id/following_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_end_32dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/following"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/followers_title"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <Button
+                            android:id="@+id/connect_btn"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/login_btn_height"
+                            android:layout_marginStart="@dimen/margin_start_16dp"
+                            android:layout_marginTop="@dimen/margin_top_24dp"
+                            android:layout_marginEnd="@dimen/margin_end_16dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:padding="4dp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/followers_title" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <com.orbis.orbis.utils.customViews.CustomTabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tab_layout_height"
+                    android:layout_marginTop="@dimen/margin_top_16dp"
+                    android:background="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/connect_btn"
+                    app:tabBackground="@drawable/tab_layout_selector"
+                    app:tabGravity="fill"
+                    app:tabIndicator="@drawable/tab_indicator"
+                    app:tabIndicatorColor="@color/black"
+                    app:tabIndicatorHeight="@dimen/tab_indicator_height"
+                    app:tabMaxWidth="0dp"
+                    app:tabMode="fixed"
+                    app:tabPadding="8dp"
+                    app:tabRippleColor="@null"
+                    app:tabSelectedTextColor="@color/black"
+                    app:tabTextAppearance="@style/tabsStyle" />
+
+                <LinearLayout
+                    android:id="@+id/noItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/no_posts_iv3"
+                        android:layout_width="match_parent"
+                        android:layout_height="167dp"
+                        android:layout_marginTop="52dp"
+                        android:contentDescription="@string/image_description"
+                        android:src="@drawable/ic_connect_instagram"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/posts_rv"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/noPostTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:text="@string/no_posts"
+                        android:textSize="@dimen/text_size_14sp"
+                        android:visibility="visible"
+                        app:layout_constraintTop_toBottomOf="@+id/no_posts_iv" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/privateView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="128dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:tint="@color/black"
+                        app:srcCompat="@drawable/ic_baseline_lock_24" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="@string/this_account_is_private"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/follow_this_account_to_see_their_photos_and_posts" />
+                </LinearLayout>
+
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/profileRefresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/profileRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:paddingBottom="@dimen/padding_bottom_90dp"
+                        android:visibility="visible" />
+
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </LinearLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/message_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_24dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_message_black"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/add_fab_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:maxImageSize="@dimen/add_fab_icon_size" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/back_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_32dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_back_arrow"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/fab_size"
+        app:layout_constraintBottom_toBottomOf="@+id/message_fab"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/message_fab"
+        app:maxImageSize="@dimen/fab_icon_size"
+        app:tint="@color/icons_grey_color" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/rightButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_start_32dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/floatingactionbuttondescription"
+            android:src="@drawable/ic_news"
+            app:borderWidth="@dimen/_0dp"
+            app:elevation="@dimen/elevation_5dp"
+            app:fabCustomSize="@dimen/fab_size"
+            app:layout_constraintBottom_toBottomOf="@+id/message_fab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/message_fab"
+            app:maxImageSize="@dimen/fab_icon_size"
+            app:tint="@color/icons_grey_color" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

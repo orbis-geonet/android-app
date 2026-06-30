@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.orbis.orbis.models.group.GroupDetails" />
+    </data>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fitsSystemWindows="true">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loader7"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="false"
+                android:elevation="8dp"
+                android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loader.json"
+                app:lottie_loop="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_bottom_24dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/floatingactionbuttondescription"
+                android:src="@drawable/ic_add_friend"
+                app:borderWidth="@dimen/_0dp"
+                app:elevation="@dimen/elevation_5dp"
+                app:fabCustomSize="@dimen/add_fab_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:maxImageSize="@dimen/add_fab_icon_size" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/posts_rv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingBottom="@dimen/padding_bottom_90dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/each_post_layout" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/back_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_32dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/floatingactionbuttondescription"
+                android:src="@drawable/ic_back_arrow"
+                app:borderWidth="@dimen/_0dp"
+                app:elevation="@dimen/elevation_5dp"
+                app:fabCustomSize="@dimen/fab_size"
+                app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/add_fab"
+                app:maxImageSize="@dimen/fab_icon_size"
+                app:tint="@color/icons_grey_color" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/event_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_start_32dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/floatingactionbuttondescription"
+                android:src="@drawable/ic_event"
+                app:borderWidth="@dimen/_0dp"
+                app:elevation="@dimen/elevation_5dp"
+                app:fabCustomSize="@dimen/fab_size"
+                app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/add_fab"
+                app:maxImageSize="@dimen/fab_icon_size"
+                app:tint="@color/icons_grey_color" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

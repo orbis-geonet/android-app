@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="com.orbis.orbis.models.Constants" />
+        <variable
+            name="data"
+            type="com.orbis.orbis.models.group.FeedPost" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_id"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_cl">
+
+            <Button
+                android:id="@+id/go_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="@dimen/login_btn_width"
+                android:layout_height="@dimen/login_btn_height"
+                android:background="@drawable/black_btn"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="4dp"
+                android:text="@string/i_go"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#000000" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@null" />
+
+            <TextView
+                android:id="@+id/confirmed_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/confirmed"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_12sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_confimed_user_event" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/event_cl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/user_menu_iv2"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:src="@drawable/ic_menu"
+                app:layout_constraintBottom_toBottomOf="@+id/event_title_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/event_title_tv"
+                app:popupTheme="@style/PopupMenu" />
+
+            <TextView
+                android:id="@+id/event_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                android:layout_marginTop="@dimen/margin_bottom_24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:lineSpacingExtra="5sp"
+                android:text="@{data.title}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/event_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_bottom_8dp"
+                android:fontFamily="@font/roboto_black"
+                android:lineSpacingExtra="2sp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/event_title_tv"
+                app:layout_constraintTop_toBottomOf="@id/event_title_tv" />
+
+            <TextView
+                android:id="@+id/event_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_end_16dp"
+                android:fontFamily="@font/roboto_black"
+                android:lineSpacingExtra="2sp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/event_date_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/event_date_tv" />
+
+            <com.orbis.orbis.utils.customViews.ViewMoreTextView
+                android:id="@+id/event_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:lineSpacingExtra="4sp"
+
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/event_date_tv"
+                app:layout_constraintTop_toBottomOf="@id/event_date_tv" />
+
+
+            <ImageView
+                android:id="@+id/event_iv"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="@dimen/margin_bottom_16dp"
+                android:visibility="@{data.mediaUrls==null || data.mediaUrls.isEmpty() ? View.GONE : View.VISIBLE}"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/event_tv" />
+
+            <VideoView
+                android:id="@+id/event_vv"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:layout_marginTop="@dimen/margin_bottom_16dp"
+                android:foreground="@drawable/big_pizza"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/event_iv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/line_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

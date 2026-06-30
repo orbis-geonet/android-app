@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/top_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <com.orbis.orbis.utils.customViews.RoundLinerLayoutNormal
+                android:id="@+id/shadow_circle"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                app:rll_elevation="@dimen/elevation_0dp"
+                app:rll_shadow_bkg_color="@color/white"
+                app:rll_shadow_color="@color/colorWhiteTrans"
+                app:rll_shadow_radius="38dp"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                android:layout_marginTop="@dimen/margin_top_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" >
+                <ImageView
+                    android:id="@+id/group_icon_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_rounded_border"
+                    android:padding="4dp"
+                    android:src="@drawable/group3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/image_description" />
+            </com.orbis.orbis.utils.customViews.RoundLinerLayoutNormal>
+
+            <TextView
+                android:id="@+id/group_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="@dimen/margin_top_32dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Amantes de pizza"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintStart_toEndOf="@id/shadow_circle"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/group_menu_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_top_16dp"
+                android:src="@drawable/ic_menu"
+                app:layout_constraintBottom_toBottomOf="@id/group_name_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/group_name_tv" />
+
+            <TextView
+                android:id="@+id/places_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="3"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintBottom_toTopOf="@+id/places_title"
+                app:layout_constraintEnd_toEndOf="@id/places_title"
+                app:layout_constraintStart_toStartOf="@id/places_title"  />
+
+            <TextView
+                android:id="@+id/places_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Lugares"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="@id/shadow_circle"
+                app:layout_constraintStart_toStartOf="@id/group_name_tv" />
+
+            <TextView
+                android:id="@+id/members_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="3.838"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/places_tv"
+                app:layout_constraintEnd_toEndOf="@id/members_title"
+                app:layout_constraintStart_toStartOf="@id/members_title"
+                app:layout_constraintTop_toTopOf="@+id/places_tv" />
+
+            <TextView
+                android:id="@+id/members_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Membros"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/places_title"
+                app:layout_constraintEnd_toStartOf="@+id/status_tv"
+                app:layout_constraintStart_toEndOf="@id/places_title" />
+
+            <ImageView
+                android:id="@+id/status_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fire"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/members_tv"
+                app:layout_constraintEnd_toEndOf="@id/status_tv"
+                app:layout_constraintStart_toStartOf="@+id/status_tv" />
+
+            <TextView
+                android:id="@+id/status_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/status"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/members_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.orbis.orbis.utils.customViews.ReadMoreTextView
+                android:id="@+id/group_desc_tv"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_bottom_24dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut   consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut  labore et dolore magna aliquyam erat, sed diam voluptua. At vero Ver mais"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/text_size_14sp"
+                app:trimMode="trimModeLine"
+                app:trimLines="3"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                app:layout_constraintEnd_toEndOf="@id/group_menu_iv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shadow_circle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/events_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="120dp"
+                android:nestedScrollingEnabled="false"
+                android:paddingBottom="@dimen/padding_bottom_90dp"
+                android:layout_marginTop="@dimen/margin_bottom_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/group_desc_tv"
+                tools:listitem="@layout/each_post_layout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_24dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_plus"
+        app:borderWidth="@dimen/_0dp"
+        app:fabCustomSize="@dimen/add_fab_size"
+        app:elevation="@dimen/elevation_5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:maxImageSize="@dimen/add_fab_icon_size" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/back_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_32dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_back_arrow"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/fab_size"
+        app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_fab"
+        app:maxImageSize="@dimen/fab_icon_size"
+        app:tint="@color/icons_grey_color" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_start_32dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_news"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/fab_size"
+        app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_fab"
+        app:maxImageSize="@dimen/fab_icon_size"
+        app:tint="@color/icons_grey_color" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

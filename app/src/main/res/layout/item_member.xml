@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.orbis.orbis.models.user.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/shadow_circle2"
+            app:layout_constraintEnd_toEndOf="@+id/textLayout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textLayout"
+            app:srcCompat="@drawable/ic_baseline_shield_24"
+            app:tint="@color/black" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/line_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shadow_circle2" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/shadow_circle2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_user"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/textLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/shadow_circle2"
+            app:layout_constraintTop_toTopOf="@+id/shadow_circle2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal">
+
+           <LinearLayout
+               android:layout_weight="1"
+               android:layout_width="0dp"
+               android:layout_gravity="center"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <TextView
+                   android:id="@+id/textView6"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="16dp"
+                   android:fontFamily="@font/poppins_medium"
+                   android:textColor="@color/black"
+                   android:textSize="16sp" />
+
+               <TextView
+                   android:visibility="gone"
+                   android:id="@+id/codeTextView"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="16dp"
+                   android:fontFamily="@font/poppins_medium"
+                   android:textColor="@color/black"
+                   android:textSize="16sp" />
+
+           </LinearLayout>
+
+            <Button
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/margin_bottom_8dp"
+                android:layout_gravity="center"
+                android:id="@+id/showCodesButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/black_btn"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/see_codes"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12sp"
+                app:backgroundTint="@color/black" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

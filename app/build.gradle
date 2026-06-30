@@ -1,0 +1,225 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id("androidx.navigation.safeargs.kotlin")
+}
+
+android {
+    def propsFile = rootProject.file('keystore.properties')
+    def localPropertiesFile = rootProject.file("local.properties")
+    if (propsFile.exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
+        signingConfigs {
+            config {
+                keyAlias props['keyAlias']
+                keyPassword props['keyPassword']
+                storeFile rootProject.file(props['storeFile'])
+                storePassword props['storePassword']
+            }
+        }
+    }
+    def localProperties = new Properties()
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.withReader('UTF-8') { reader -> localProperties.load(reader) }
+    }
+
+    compileSdkVersion 34
+
+    defaultConfig {
+        applicationId "com.example.yourappname"
+        minSdkVersion 24
+        targetSdkVersion 35
+        versionCode 100
+        versionName "1.0"
+        ndkVersion = "21.3.6528147"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
+    }
+
+    buildTypes {
+        debug {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            buildConfigField("String", "BASE_URL", "\"${localProperties["BASE_DEBUG_URL"]}\"")
+            buildConfigField("String", "X_API_KEY", "\"${localProperties["X-API-KEY"]}\"")
+            buildConfigField("String", "X_MASTER_KEY", "\"${localProperties["X-MASTER-KEY"]}\"")
+            buildConfigField("String", "MAPS_API_KEY", "\"${localProperties["MAPS_DEBUG_API_KEY"]}\"")
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            buildConfigField("String", "BASE_URL", "\"${localProperties["BASE_PROD_URL"]}\"")
+            buildConfigField("String", "X_API_KEY", "\"${localProperties["X-API-KEY"]}\"")
+            buildConfigField("String", "X_MASTER_KEY", "\"${localProperties["X-MASTER-KEY"]}\"")
+            buildConfigField("String", "MAPS_API_KEY", "\"${localProperties["MAPS_PROD_API_KEY"]}\"")
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packaging {
+        jniLibs {
+            useLegacyPackaging = false
+        }
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+        buildConfig true
+    }
+    lint {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit false
+        }
+    }
+    configurations{
+        all*.exclude module: 'bcprov-jdk15on'
+    }
+    namespace 'com.orbis.orbis'
+}
+ext {
+    androidx_lifecycle_version = "2.4.0-rc01"
+}
+dependencies {
+    implementation "com.google.android.gms:play-services-location:21.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-process:$androidx_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_version"
+    implementation 'com.github.nguyencse:urlembeddedview:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.gms:play-services-maps:19.0.0'
+    implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+    implementation "androidx.window:window:1.5.1"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0-beta02'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.0-beta02'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.6'
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx:21.0.2'
+    implementation 'com.google.android.gms:play-services-ads:22.0.0'
+    implementation 'com.google.firebase:firebase-messaging:23.0.8'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.3.1'
+    implementation project(path: ':Lassi')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.google.android.play:app-update:2.1.0'
+
+
+    implementation 'com.github.3llomi:CircularStatusView:V1.0.3'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'com.github.rosariopfernandes:firecoil:2.0.0-rc2'
+    kapt 'com.github.bumptech.glide:compiler:4.13.2'
+    implementation 'com.github.CanHub:Android-Image-Cropper:2.2.2'
+
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1'
+
+    // OK HTTP
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.51.1"
+    kapt 'com.google.dagger:hilt-android-compiler:2.51.1'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation ('com.google.firebase:firebase-auth-ktx') {
+        exclude module: "play-services-safetynet"
+    }
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.firebaseui:firebase-ui-storage:8.0.1'
+    //Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:18.1.3'
+    implementation 'com.facebook.android:facebook-login:18.1.3'
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:4.2.0"
+
+
+
+    //Circular Image View
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation "io.getstream:avatarview-coil:1.0.7"
+
+    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+    implementation 'com.github.davidmoten:geo:0.7.7'
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'com.github.stfalcon-studio:StfalconImageViewer:1.0.1'
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.19.1'
+    implementation 'com.github.AhmMhd:SeeMoreTextView-Android:1.0.0'
+    implementation 'com.github.piasy:rxandroidaudio:1.7.0'
+    implementation 'com.github.ranaparamveer:customSeekbarAndroid:1.0.1'
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+
+    implementation project(':Lassi')
+
+    implementation 'com.github.TOrnelas:SegmentedProgressBar:0.0.3'
+
+    // Stripe Android SDK
+    implementation 'com.stripe:stripe-android:20.16.1'
+
+    implementation 'com.google.maps:google-maps-services:2.2.0'
+
+    implementation 'com.github.AbedElazizShe:LightCompressor:1.2.3'
+    implementation 'io.branch.sdk.android:library:5.5.0'
+
+    implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
+
+    implementation 'com.android.billingclient:billing:7.0.0'
+
+    //Room
+    implementation "androidx.room:room-runtime:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
+    implementation "androidx.room:room-rxjava2:2.6.1"
+}

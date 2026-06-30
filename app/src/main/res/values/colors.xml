@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="micBackground">#F1F1F1</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color1">#ffac6d</color>
+    <color name="color2">#6DFFB1</color>
+    <color name="color3">#62FFFFFF</color>
+    <color name="color4">#6DFFB1</color>
+    <color name="color5">#B968FF</color>
+    <color name="color8">#8a9ead</color>
+    <color name="thumb_color">#3d232323</color>
+    <color name="colorWhiteTrans">#00FFFFFF</color>
+    <color name="sub_title_color">#A3A3A3</color>
+    <color name="color6">#42FFFFFF</color>
+    <color name="color7">#FB64C8</color>
+    <color name="place_color2">#666DFFB1</color>
+    <color name="place_color1">#66B968FF</color>
+    <color name="place_color3">#66FB64C8</color>
+    <color name="line_color">#E6EAEE</color>
+    <color name="hint_color">#919191</color>
+    <color name="icons_grey_color">#C5C5C5</color>
+    <color name="post_color">#707070</color>
+    <color name="likes_color">#D2D2D2</color>
+    <color name="f_black_color">#434343</color>
+    <color name="show_more_color">#00b9ff</color>
+    <color name="camera_bg_color">#f1f1f1</color>
+    <color name="shadowColor">#29191919</color>
+    <color name="shadowColor2">#11191919</color>
+
+    <color name="unselected_tab_color">#919191</color>
+
+    <color name="g_color1">#ffaa00</color>
+    <color name="g_color2">#ff68c8</color>
+    <color name="g_color3">#ab00ff</color>
+    <color name="g_color4">#aa0066ff</color>
+    <color name="g_color5">#6dfff0</color>
+    <color name="g_color6">#72ff6d</color>
+    <color name="g_color7">#d6ff00</color>
+
+    <color name="shadow_image_color">#D2D2D2</color>
+    <color name="default_dot_color">#EFEFEF</color>
+    <color name="default_trans_dot_color">#aaEFEFEF</color>
+
+    <color name="text_black">#232323</color>
+
+    <!-- Story Display Progress-->
+    <color name="progress_primary">@color/white</color>
+    <color name="progress_secondary">@color/gray_scale</color>
+    <color name="progress_max_active">@color/white</color>
+
+    <color name="gray_scale">#8AFFFFFF</color>
+    <color name="search_bg_color">#ddffffff</color>
+    <color name="view_more_blue">#00b9ff</color>
+    <color name="followedState">#6dffb1</color>
+
+    <color name="error_color">#ff6868</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>

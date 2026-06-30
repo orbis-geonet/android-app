@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bottom_sheet_bg">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loader4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="8dp"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loader.json"
+            app:lottie_loop="true" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="130dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/radius_10dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_8dp"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_top_16dp"
+        android:layout_marginTop="@dimen/margin_top_8dp"
+        android:layout_marginEnd="@dimen/margin_top_16dp"
+        android:background="@drawable/bg_search"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_top_16dp"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:layout_marginBottom="@dimen/margin_12dp"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_search" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_top_16dp"
+            android:theme="@style/AppSearchView2"
+            app:defaultQueryHint="Type here the place you are looking for"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@null"
+            app:queryHint="Type here the place you are looking for"
+            app:searchHintIcon="@null"
+            app:searchIcon="@null"
+            app:theme="@style/AppSearchView" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/places_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constrainedHeight="true"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/padding_8dp"
+        android:paddingBottom="@dimen/padding_bottom_90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_layout"
+        tools:itemCount="2"
+        tools:listitem="@layout/each_checkin_place_item" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

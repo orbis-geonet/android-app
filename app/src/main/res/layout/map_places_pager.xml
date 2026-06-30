@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true"
+    android:layout_marginBottom="6dp"
+    android:elevation="8dp">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/map_places_pager_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_marginBottom="@dimen/margin_bottom_8dp"
+        android:layout_marginTop="@dimen/margin_bottom_8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--<com.orbis.orbis.ui.authModule.adapter.WrapContentLinearLayout
+        android:id="@+id/viewPagerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.orbis.orbis.ui.authModule.adapter.WrapContentLinearLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

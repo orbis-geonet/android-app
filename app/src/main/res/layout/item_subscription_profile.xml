@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_margin="@dimen/elevation_6dp"
+        android:id="@+id/textLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/shadow_circle2"
+        app:layout_constraintTop_toTopOf="@+id/shadow_circle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_end_8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_subscription"
+                app:layout_constraintEnd_toStartOf="@id/btn_cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Amantes de pizza" />
+
+            <TextView
+                android:id="@+id/tv_subscription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/elevation_4dp"
+                android:layout_marginEnd="@dimen/margin_end_8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_group"
+                tools:text="Standard - $9,90/mon" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/codeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_end_8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/hint_color"
+                android:layout_marginTop="@dimen/elevation_4dp"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_subscription"
+                tools:text="" />
+
+        </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:orientation="vertical">
+           <Button
+               android:id="@+id/btn_cancel"
+               style="@style/Widget.AppCompat.Button.Borderless"
+               android:layout_width="wrap_content"
+               android:layout_height="@dimen/button_height"
+               android:layout_gravity="center"
+               android:background="@drawable/black_btn"
+               android:fontFamily="@font/roboto_regular"
+               android:text="@string/cancel"
+               android:textAllCaps="false"
+               android:textColor="@color/white"
+               android:textSize="@dimen/text_size_12sp"
+               app:backgroundTint="@color/black"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <Button
+               android:visibility="gone"
+               android:layout_gravity="center|start"
+               android:id="@+id/showCodesButton"
+               style="@style/Widget.AppCompat.Button.Borderless"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:background="@drawable/black_btn"
+               android:fontFamily="@font/roboto_regular"
+               android:text="@string/see_codes"
+               android:layout_marginTop="@dimen/elevation_4dp"
+               android:textAllCaps="false"
+               android:textColor="@color/white"
+               android:textSize="@dimen/text_size_12sp"
+               app:backgroundTint="@color/black" />
+
+       </LinearLayout>
+    </LinearLayout>
+
+</layout>

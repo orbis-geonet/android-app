@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="loading"
+            type="Boolean" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Full-screen map -->
+            <fragment
+                android:id="@+id/map2"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Top gradient overlay -->
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/gradient_home_bg_top"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/line_opacity2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/top_bar_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="0dp" />
+
+            <!-- App name / logo -->
+            <TextView
+                android:id="@+id/photo_item_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_16dp"
+                android:contentDescription="@string/image_description"
+                android:elevation="1dp"
+                android:fontFamily="@font/arciform"
+                android:letterSpacing="0.3"
+                android:text="@string/orbis_logo"
+                android:textColor="#232323"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/login_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/login_btn" />
+
+            <!-- Login button -->
+            <Button
+                android:id="@+id/login_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="@dimen/login_btn_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="@dimen/margin_end_16dp"
+                android:background="@null"
+                android:elevation="1dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/top_bar_guideline" />
+
+            <!-- User avatar -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_iv"
+                android:layout_width="@dimen/user_iv_width"
+                android:layout_height="@dimen/user_iv_height"
+                android:layout_marginStart="@dimen/margin_start_32dp"
+                android:contentDescription="@string/image_description"
+                android:elevation="3dp"
+                android:src="@drawable/ic_user"
+                app:layout_constraintBottom_toBottomOf="@+id/message_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/message_icon" />
+
+            <!-- Message icon (centred in top bar) -->
+            <include
+                android:id="@+id/message_icon"
+                layout="@layout/message_icon"
+                android:layout_width="@dimen/icon_layout_width"
+                android:layout_height="@dimen/icon_layout_width"
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/top_bar_guideline" />
+
+            <!-- Notification icon (top-right) -->
+            <include
+                android:id="@+id/notification_icon"
+                layout="@layout/notification_icon"
+                android:layout_width="@dimen/icon_layout_width"
+                android:layout_height="@dimen/icon_layout_width"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="@dimen/margin_end_32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- ── City picker: when location IS available ──────────── -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cityBoxWLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0.75"
+                android:clickable="false"
+                android:visibility="gone"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/top_guideline"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="52dp"
+                    android:minWidth="180dp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="28dp"
+                    android:paddingBottom="14dp">
+
+                    <ImageView
+                        android:id="@+id/iv_city_loc"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/icon_blur_bg"
+                        android:contentDescription="@string/image_description"
+                        android:paddingVertical="2dp"
+                        app:srcCompat="@drawable/ic_search_city"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:id="@+id/cityTextLocView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/choose_city_title"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/cityPickerLocView"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:dropDownHeight="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/city_select"
+                        android:maxLines="1"
+                        android:popupBackground="#CFFFFFFF"
+                        android:singleLine="true"
+                        android:textColor="#FF222222"
+                        android:textColorHint="#23232359"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Location address label (shown below city picker when location available) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/locationBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0.78"
+                android:visibility="gone"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityBoxWLocation"
+                app:layout_constraintWidth_default="wrap"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/locationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingStart="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="6dp"
+                    android:textSize="14sp"
+                    tools:text="Obert Robertson, 1234 NW Bobcat Lane,\nSt. Robert" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── City picker: when location is NOT available ─────── -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cityBoxNoLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0.75"
+                android:clickable="false"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/map2"
+                app:layout_constraintWidth_default="wrap">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="52dp"
+                    android:minWidth="180dp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="28dp"
+                    android:paddingBottom="14dp">
+
+                    <ImageView
+                        android:id="@+id/iv_city_no_loc"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/icon_blur_bg"
+                        android:contentDescription="@string/image_description"
+                        android:paddingVertical="2dp"
+                        app:srcCompat="@drawable/ic_search_city"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:id="@+id/cityTextNoLocView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/choose_city_title"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/cityPickerNoLocView"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:dropDownHeight="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/city_select"
+                        android:maxLines="1"
+                        android:popupBackground="#CFFFFFFF"
+                        android:singleLine="true"
+                        android:textColor="#FF222222"
+                        android:textColorHint="#23232359"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Crosshair overlay -->
+            <TextView
+                android:id="@+id/crosshair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:text="@string/plus_symbol"
+                android:textColor="#80000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Group cards / places pager overlays -->
+            <include
+                android:id="@+id/map_polygon_group_cards"
+                layout="@layout/map_polygon_group_cards"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/map_places_pager"
+                layout="@layout/map_places_pager"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- Seek bars -->
+            <com.orbis.orbis.utils.customViews.VerticalSeekBar
+                android:id="@+id/right_seekbar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:max="200"
+                android:progress="100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:thumb="@drawable/ic_right_thumb" />
+
+            <com.orbis.orbis.utils.customViews.VerticalSeekBar
+                android:id="@+id/left_seekbar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:max="200"
+                android:progress="100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:thumb="@drawable/ic_left_thumb" />
+
+            <!-- Check-in progress overlay -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/check_in_loading_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/check_in_loading_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:text="@string/map_updating"
+                    android:textColor="#FF222222"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/check_in_progress_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/check_in_progress_bar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="6dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:maxHeight="6dp"
+                    android:minHeight="6dp"
+                    android:paddingHorizontal="70dp"
+                    android:progressDrawable="@drawable/progress_bar_drawable"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/check_in_loading_extra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0"
+                    android:paddingTop="6dp"
+                    android:text="@string/map_updating_extra"
+                    android:textColor="#222222"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/check_in_progress_bar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Loading spinner -->
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loader5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:elevation="8dp"
+                android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintVertical_bias="0.506"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loader.json"
+                app:lottie_loop="true"
+                tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/bottom_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.88" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/top_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.06" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- ══════════════════════════════════════════
+             Bottom sheet
+        ══════════════════════════════════════════ -->
+        <FrameLayout
+            android:id="@+id/bottom_sheet_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_dialog_top_rounded"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:fitsSystemWindows="false"
+            android:visibility="gone"
+            app:behavior_fitToContents="true"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            app:behavior_skipCollapsed="false"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+
+        <!-- ══════════════════════════════════════════
+             Bottom navigation bar
+        ══════════════════════════════════════════ -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_button_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Bottom gradient overlay -->
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/gradient_home_bg"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Return-to-area FAB -->
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/my_location_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/floatingactionbuttondescription"
+                android:letterSpacing="0"
+                android:minHeight="36dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="@string/return_to_area"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                app:borderWidth="@dimen/_0dp"
+                app:collapsedSize="36dp"
+                app:elevation="@dimen/elevation_5dp"
+                app:icon="@drawable/ic_my_location"
+                app:iconPadding="6dp"
+                app:iconSize="16dp"
+                app:iconTint="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/communities_nearby_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:maxImageSize="@dimen/fab_location_icon_size"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- Nearby communities button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/communities_nearby_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:alpha="0.7"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="@dimen/elevation_5dp"
+                app:layout_constraintBottom_toTopOf="@+id/logo_cardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/nearby_communities_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="40dp"
+                    android:paddingStart="14dp"
+                    android:paddingVertical="13dp"
+                    android:paddingEnd="14dp"
+                    android:text="@string/nearby_communities"
+                    android:textColor="#FF222222"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Up arrow button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/communities_up_button"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="32dp"
+                android:alpha="0.7"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="23dp"
+                app:cardElevation="@dimen/elevation_5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/communities_nearby_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/communities_nearby_button">
+
+                <ImageView
+                    android:id="@+id/back_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/floatingactionbuttondescription"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_up_arrow" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Central check-in button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/logo_cardview"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="@dimen/elevation_5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/logo_fab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/image_description"
+                    android:elevation="@dimen/radius_10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_checkin_button" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Groups FAB (right) -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/groups_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_end_32dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/floatingactionbuttondescription"
+                android:src="@drawable/ic_groups"
+                app:borderWidth="@dimen/_0dp"
+                app:elevation="@dimen/elevation_5dp"
+                app:fabCustomSize="@dimen/fab_size"
+                app:layout_constraintBottom_toBottomOf="@+id/logo_cardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/logo_cardview"
+                app:maxImageSize="@dimen/fab_icon_size"
+                app:tint="#BFBFBF" />
+
+            <!-- News feed FAB (left) -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/news_feed_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_32dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/floatingactionbuttondescription"
+                android:src="@drawable/ic_news"
+                app:borderWidth="@dimen/_0dp"
+                app:elevation="@dimen/elevation_5dp"
+                app:fabCustomSize="@dimen/fab_size"
+                app:layout_constraintBottom_toBottomOf="@+id/logo_cardview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/logo_cardview"
+                app:maxImageSize="@dimen/fab_icon_size"
+                app:tint="#BFBFBF" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/post_cl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_cl"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/margin_bottom_24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_shadow_circle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_user"
+
+            app:civ_border_width="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/user_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_12dp"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@{data.group.name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintEnd_toStartOf="@+id/user_menu_iv"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/user_shadow_circle"
+            app:layout_constraintTop_toTopOf="@+id/user_shadow_circle" />
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/user_shadow_circle"
+            app:layout_constraintEnd_toStartOf="@+id/user_menu_iv"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/user_name_tv"
+            app:layout_constraintTop_toBottomOf="@id/user_name_tv"
+            tools:ignore="SmallSp" />
+
+        <ImageView
+            android:id="@+id/user_menu_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintBottom_toBottomOf="@id/user_shadow_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/user_shadow_circle"
+            app:popupTheme="@style/PopupMenu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/check_in_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/user_cl">
+
+
+        <TextView
+            android:id="@+id/check_in_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Emma Stone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/check_in_tv"
+            app:layout_constraintEnd_toStartOf="@+id/check_in_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/check_in_tv" />
+
+        <ImageView
+            android:id="@+id/chekc_in_iv"
+            android:layout_width="@dimen/check_in_width"
+            android:layout_height="@dimen/check_in_height"
+            android:contentDescription="@string/image_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_check_in"
+            app:layout_constraintBottom_toBottomOf="@+id/chekc_in_user_icon_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/chekc_in_user_icon_iv" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chekc_in_user_icon_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/margin_top_16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_user"
+            app:civ_border_width="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/check_in_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/check_in_name_tv" />
+
+
+        <TextView
+            android:id="@+id/check_in_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="@string/claimed"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_cardview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="120dp"
+            app:layout_constraintBottom_toBottomOf="@+id/chekc_in_user_icon_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/check_in_tv"
+            app:layout_constraintTop_toTopOf="@+id/chekc_in_user_icon_iv">
+
+        </androidx.cardview.widget.CardView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/add_cardview"
+            app:layout_constraintEnd_toEndOf="@+id/add_cardview"
+            app:layout_constraintStart_toStartOf="@+id/add_cardview"
+            app:layout_constraintTop_toTopOf="@+id/add_cardview" />
+
+        <ImageView
+            android:id="@+id/add_iv"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/image_description"
+            android:elevation="3dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_tree"
+            app:layout_constraintBottom_toBottomOf="@+id/add_cardview"
+            app:layout_constraintEnd_toEndOf="@+id/add_cardview"
+            app:layout_constraintStart_toStartOf="@+id/add_cardview"
+            app:layout_constraintTop_toTopOf="@+id/add_cardview" />
+
+        <TextView
+            android:id="@+id/check_in_place_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Pedra da praia"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/check_in_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/check_in_tv"
+            app:layout_constraintTop_toTopOf="@+id/check_in_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/comment_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start_16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="@dimen/margin_start_16dp"
+        android:layout_marginBottom="@dimen/margin_bottom_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_in_cl">
+
+        <ImageView
+            android:id="@+id/likes_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_tick"
+            app:layout_constraintBottom_toBottomOf="@id/comments_iv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/comments_iv" />
+
+        <TextView
+            android:id="@+id/likes_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_start_8dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="247"
+            android:textColor="@color/likes_color"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@id/likes_iv"
+            app:layout_constraintStart_toEndOf="@id/likes_iv"
+            app:layout_constraintTop_toTopOf="@id/likes_iv" />
+
+        <ImageView
+            android:id="@+id/comments_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_32dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_comment"
+            app:layout_constraintStart_toEndOf="@id/likes_tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/comments_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_start_8dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="57"
+            android:textColor="@color/likes_color"
+            android:textSize="@dimen/text_size_12sp"
+            app:layout_constraintBottom_toBottomOf="@id/likes_iv"
+            app:layout_constraintStart_toEndOf="@id/comments_iv"
+            app:layout_constraintTop_toTopOf="@id/likes_iv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_id"
+        android:layout_width="@dimen/status_size"
+        android:layout_height="@dimen/status_size"
+        android:layout_marginEnd="@dimen/margin_end_8dp"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/image_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/storyThumb"
+                android:layout_width="@dimen/status_size"
+                android:layout_height="@dimen/status_size"
+                android:layout_centerInParent="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_user" />
+
+            <com.devlomi.circularstatusview.CircularStatusView
+                android:id="@+id/circular_status_view"
+                android:layout_width="@dimen/status_circle_size"
+                android:layout_height="@dimen/status_circle_size"
+                android:layout_centerInParent="true"
+                app:portion_color="@color/color2"
+                app:portion_spacing="5dp"
+                app:portion_width="3dp" />
+
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

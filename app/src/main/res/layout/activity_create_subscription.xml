@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding_16dp">
+
+                <EditText
+                    android:id="@+id/et_subscription_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_text"
+                    android:fontFamily="@font/roboto_bold"
+                    android:hint="@string/hint_subscription_name"
+                    android:inputType="text"
+                    android:padding="@dimen/padding_16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_name_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/error_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_subscription_name"
+                    tools:text="Error always in place with 12 pt font with simple sentence"
+                    tools:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/et_subscription_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:fontFamily="@font/roboto_bold"
+                    android:hint="@string/hint_subscription_description"
+                    android:inputType="textMultiLine"
+                    android:maxLength="250"
+                    android:padding="@dimen/padding_16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name_error" />
+
+                <TextView
+                    android:id="@+id/tv_description_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/error_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_subscription_description"
+                    tools:text="Error always in place with 12 pt font with simple sentence"
+                    tools:visibility="visible" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:background="@drawable/bg_edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_description_error">
+
+                    <EditText
+                        android:id="@+id/et_subscription_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_end_8dp"
+                        android:background="@null"
+                        android:fontFamily="@font/roboto_bold"
+                        android:hint="@string/hint_price"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/padding_16dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="@dimen/text_size_12sp"
+                        app:layout_constraintEnd_toStartOf="@id/iv_flag"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_flag"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="@dimen/margin_16dp"
+                        android:src="@drawable/ic_brazil"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_tax_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_price"
+                    tools:text="Fees: 3% | Total: $ 0,00" />
+
+                <TextView
+                    android:id="@+id/tv_price_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/error_color"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_tax_hint"
+                    tools:text="Error always in place with 12 pt font with simple sentence"
+                    tools:visibility="visible" />
+
+
+                <TextView
+                    android:id="@+id/paymentFrequencyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/payment_frequency"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_price_error" />
+
+                <LinearLayout
+                    android:id="@+id/paymentFrequencyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    app:layout_constraintTop_toBottomOf="@id/paymentFrequencyTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/margin_start_16dp"
+                        android:paddingEnd="@dimen/margin_top_16dp"
+                        android:layout_width="0dp"
+                        android:background="@drawable/bg_grey_rect"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_drop_down"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:contentDescription="@string/image_description"/>
+
+                        <TextView
+                            android:id="@+id/paymentFrequencyTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center|start"
+                            android:layout_marginEnd="24dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:hint="@string/choose_the_payment_frequency"
+                            android:text="@string/one_time"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/text_size_16sp" />
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:visibility="gone"
+                        android:id="@+id/installmentEditText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_bottom_8dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:background="@drawable/bg_grey_rect"
+                        android:gravity="center"
+                        android:hint="1"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/padding_16dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="@dimen/text_size_12sp"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/photosLayout"
+                    android:layout_weight="1"
+                    android:paddingEnd="@dimen/margin_top_16dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    app:layout_constraintTop_toBottomOf="@id/paymentFrequencyLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_height="@dimen/edit_text_height">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/image_description"
+                        android:src="@drawable/ic_plus_18dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/photos"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_16sp" />
+
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/photoSliderLayout"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="@dimen/photo_slider_h"
+                    android:layout_marginTop="@dimen/margin_top_16dp"
+                    app:layout_constraintTop_toBottomOf="@id/photosLayout"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/photo_slider_h"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/check_in_viewpager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </androidx.viewpager.widget.ViewPager>
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tab_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@null"
+                            app:layout_constraintBottom_toBottomOf="@+id/check_in_viewpager"
+                            app:tabBackground="@drawable/tab_dots_photo_slider"
+                            app:tabGravity="center"
+                            app:tabIndicator="@null"
+                            app:tabIndicatorColor="@android:color/transparent"
+                            app:tabIndicatorHeight="0dp"
+                            app:tabMaxWidth="20dp"
+                            app:tabMode="fixed"
+                            app:tabPadding="8dp"
+                            app:tabRippleColor="@null"
+                            app:tabSelectedTextColor="@color/black"
+                            app:tabTextAppearance="@style/tabsStyle"
+                            tools:layout_editor_absoluteX="56dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="0dp"
+                        android:layout_height="1.5dp"
+                        android:background="@color/line_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/close_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_start_16dp"
+                    android:contentDescription="@string/image_description"
+                    android:src="@drawable/ic_close_circle"
+                    android:visibility="gone"
+                    app:elevation="@dimen/elevation_2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/photoSliderLayout"
+                    app:tint="@color/hint_color" />
+
+                <TextView
+                    android:id="@+id/tv_benefits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/benefits_of_subscription"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/photoSliderLayout" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_benefits"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/btn_create"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_benefits"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_subscription_benefit_add" />
+
+                <Button
+                    android:id="@+id/btn_create"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:background="@drawable/black_btn"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/create_subscription"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loader4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="8dp"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loader.json"
+            app:lottie_loop="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/fab_message_size"
+    android:layout_height="@dimen/fab_message_size"
+    android:clipToPadding="false"
+    android:padding="@dimen/padding_5dp"
+    android:focusable="true">
+    <TextView
+        android:id="@+id/cart_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:background="@drawable/badge_bg"
+        android:elevation="6dp"
+        android:fontFamily="@font/roboto_bold"
+        android:padding="3dp"
+        android:text="99"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_12sp"
+        android:visibility="visible" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/message_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/floatingactionbuttondescription"
+        android:src="@drawable/ic_message"
+        app:borderWidth="@dimen/_0dp"
+        app:elevation="@dimen/elevation_5dp"
+        app:fabCustomSize="@dimen/fab_size"
+        app:layout_constraintBottom_toBottomOf="@+id/add_cardview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_cardview"
+        app:maxImageSize="@dimen/fab_icon_size"
+        app:tint="@color/icons_grey_color" />
+
+
+
+</FrameLayout>

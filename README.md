@@ -1,39 +1,55 @@
 # Orbis Android
 
-Orbis is a **location-based social network** built around real-world places, communities, and events. Instead of one global feed, everything in Orbis is anchored to the map: you discover people, posts, groups, and events *near you*, and you build presence at real places by physically checking in.
+**Find your tribe. Claim your ground.**
 
-This repository is the **native Android client** (Kotlin). It's a thin client that connects to an Orbis backend, so anyone can run their own Orbis instance and point this app at it.
+Orbis is a **location-based social network** built around real-world places and the communities — *tribes* — that claim them. Everything in Orbis lives on the map: you find the tribes near you, claim places and territory for your tribe, and see what your tribe is posting around you. The more your tribe grows, the more ground it holds.
+
+This repository is the **native Android client** (Kotlin). It's a thin client that connects to an Orbis backend, so anyone can run their own instance and point the app at it.
+
+<p align="center">
+  <img src="docs/screenshots/find-your-tribe.png" width="150" alt="Find your tribe — claim your ground" />
+  <img src="docs/screenshots/claim-the-map.png" width="150" alt="Every tribe claims its piece of the map" />
+  <img src="docs/screenshots/territory-grows.png" width="150" alt="Your territory grows as your tribe grows" />
+  <img src="docs/screenshots/nearby-tribes.png" width="150" alt="See which tribes are catching fire" />
+  <img src="docs/screenshots/tribe-feed.png" width="150" alt="See what your tribe is posting nearby" />
+</p>
 
 ## What you can do
 
-- **Explore the map** — Discover places, groups, events, and posts around your current location on an interactive map.
-- **Places** — Create and follow real-world places, rate them, browse their events and activity, and report bad ones.
-- **Check-ins & territory** — Check into places through geofenced polygon boundaries (the polygon/geohash system) — Orbis's core mechanic for tying social activity to real geography.
-- **Groups (Circles)** — Create or join groups, manage members and admins, follow groups, get recommendations, and moderate (ban / block / report).
-- **Events** — Create events tied to a place or group and RSVP / attend.
-- **Feed & posts** — A location-aware feed (nearby, your network, per-group, per-place) with posts, comments, and reactions.
-- **Stories** — Share ephemeral stories and view nearby and network stories, with seen-tracking.
+- **Explore the map** — Discover tribes, places, events, and posts around your current location.
+- **Claim territory** — Tribes claim real-world places and grow their territory on the map (the polygon / geohash system). Your territory expands as your tribe grows — no physical check-in required.
+- **Tribes** — Create or join tribes, manage members and admins, follow tribes, get recommendations, and moderate (ban / block / report).
+- **Places** — Add and follow real-world places, rate them, and browse their activity and events.
+- **Events** — Create events tied to a place or tribe and RSVP / attend.
+- **Feed & posts** — A location-aware feed (nearby, your tribe, per-place) with posts, comments, and reactions.
+- **Stories** — Share ephemeral stories and view nearby and tribe stories.
 - **Messaging** — Direct one-to-one chat with other users.
 - **Profiles** — User profiles with followers / following and personal activity feeds.
-- **Notifications** — Real-time push notifications (Firebase Cloud Messaging) with unread counts.
-- **Subscriptions** — Paid group subscriptions and premium tiers (Stripe), including subscriber management and statistics for group owners.
+- **Notifications** — Real-time push notifications (Firebase Cloud Messaging).
 
-**Sign-in options:** email / password (Firebase Auth), Google, Facebook, and Instagram.
+**Sign-in:** email / password (Firebase Auth) and Google.
 
 ## How it works
 
-Orbis is **operator-run**: this app is a client that connects to a backend you control (the Orbis Clone Proxy + Java backend) via an `X-MASTER-Key`. Location is central — the app uses GPS to place you on the map, and check-ins are validated against server-computed polygon geofences, so what you do in the app maps onto real-world territory.
+Orbis is **operator-run**: this app connects to a backend you control (the Orbis Clone Proxy + Java backend) via an `X-MASTER-Key`. Location is central — your device location places you on the map, and tribes' claimed places and territory are computed server-side as map polygons, so social activity maps onto real geography.
 
 ## Tech stack
 
 - **Language:** Kotlin
-- **Architecture:** MVVM — feature modules, each with ViewModel / Views / Adapters
+- **Architecture:** MVVM — feature modules (ViewModel / Views / Adapters)
 - **Networking:** Retrofit (`SwaggerApiClient`) against the Orbis REST API
-- **Local storage:** Room (offline feed / group caching)
+- **Local storage:** Room (offline feed / tribe caching)
 - **Maps & location:** Google Maps SDK + device location
 - **Auth & push:** Firebase Authentication + Firebase Cloud Messaging
-- **Payments:** Stripe (subscriptions)
 - **Android SDK:** API 24–35
+
+## For clone operators — rename the app before publishing
+
+"Orbis" and its branding belong to the original project. If you deploy your own instance, **you must rebrand before shipping** — do not publish it as "Orbis." At minimum, change:
+
+- **App name** — `app_name` in `app/src/main/res/values/strings.xml`
+- **Application ID / package** — `applicationId` in `app/build.gradle` (currently the placeholder `com.example.yourappname`) and the `com.orbis.orbis` package
+- **Launcher icons & branding** — replace the app icons and any in-app logos
 
 ---
 

@@ -1,3 +1,42 @@
+# Orbis Android
+
+Orbis is a **location-based social network** built around real-world places, communities, and events. Instead of one global feed, everything in Orbis is anchored to the map: you discover people, posts, groups, and events *near you*, and you build presence at real places by physically checking in.
+
+This repository is the **native Android client** (Kotlin). It's a thin client that connects to an Orbis backend, so anyone can run their own Orbis instance and point this app at it.
+
+## What you can do
+
+- **Explore the map** — Discover places, groups, events, and posts around your current location on an interactive map.
+- **Places** — Create and follow real-world places, rate them, browse their events and activity, and report bad ones.
+- **Check-ins & territory** — Check into places through geofenced polygon boundaries (the polygon/geohash system) — Orbis's core mechanic for tying social activity to real geography.
+- **Groups (Circles)** — Create or join groups, manage members and admins, follow groups, get recommendations, and moderate (ban / block / report).
+- **Events** — Create events tied to a place or group and RSVP / attend.
+- **Feed & posts** — A location-aware feed (nearby, your network, per-group, per-place) with posts, comments, and reactions.
+- **Stories** — Share ephemeral stories and view nearby and network stories, with seen-tracking.
+- **Messaging** — Direct one-to-one chat with other users.
+- **Profiles** — User profiles with followers / following and personal activity feeds.
+- **Notifications** — Real-time push notifications (Firebase Cloud Messaging) with unread counts.
+- **Subscriptions** — Paid group subscriptions and premium tiers (Stripe), including subscriber management and statistics for group owners.
+
+**Sign-in options:** email / password (Firebase Auth), Google, Facebook, and Instagram.
+
+## How it works
+
+Orbis is **operator-run**: this app is a client that connects to a backend you control (the Orbis Clone Proxy + Java backend) via an `X-MASTER-Key`. Location is central — the app uses GPS to place you on the map, and check-ins are validated against server-computed polygon geofences, so what you do in the app maps onto real-world territory.
+
+## Tech stack
+
+- **Language:** Kotlin
+- **Architecture:** MVVM — feature modules, each with ViewModel / Views / Adapters
+- **Networking:** Retrofit (`SwaggerApiClient`) against the Orbis REST API
+- **Local storage:** Room (offline feed / group caching)
+- **Maps & location:** Google Maps SDK + device location
+- **Auth & push:** Firebase Authentication + Firebase Cloud Messaging
+- **Payments:** Stripe (subscriptions)
+- **Android SDK:** API 24–35
+
+---
+
 # Orbis Android — Developer Setup
 
 ## Prerequisites

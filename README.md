@@ -1,17 +1,20 @@
 # Orbis Android
 
-**Find your tribe. Claim your ground.**
-
-Orbis is a **location-based social network** built around real-world places and the communities — *tribes* — that claim them. Everything in Orbis lives on the map: you find the tribes near you, claim places and territory for your tribe, and see what your tribe is posting around you. The more your tribe grows, the more ground it holds.
+Orbis is a [geosocial network](https://en.wikipedia.org/wiki/Geosocial_networking) built around real-world places and the communities — *tribes* — that claim them. Everything in Orbis lives on the map: you find the tribes near you, claim places and territory for your tribe, and see what your tribe is posting around you. The more your tribe grows, the more ground it holds.
 
 This repository is the **native Android client** (Kotlin). It's a thin client that connects to an Orbis backend, so anyone can run their own instance and point the app at it.
 
 <p align="center">
-  <img src="docs/screenshots/find-your-tribe.png" width="150" alt="Find your tribe — claim your ground" />
-  <img src="docs/screenshots/claim-the-map.png" width="150" alt="Every tribe claims its piece of the map" />
-  <img src="docs/screenshots/territory-grows.png" width="150" alt="Your territory grows as your tribe grows" />
-  <img src="docs/screenshots/nearby-tribes.png" width="150" alt="See which tribes are catching fire" />
-  <img src="docs/screenshots/tribe-feed.png" width="150" alt="See what your tribe is posting nearby" />
+  <img src="docs/screenshots/find-your-tribe.jpg" width="150" alt="Find your tribe — claim your ground" />
+  <img src="docs/screenshots/claim-the-map.jpg" width="150" alt="Every tribe claims its piece of the map" />
+  <img src="docs/screenshots/territory-grows.jpg" width="150" alt="Your territory grows as your tribe grows" />
+  <img src="docs/screenshots/tribes-on-fire.jpg" width="150" alt="See which tribes are catching fire" />
+</p>
+<p align="center">
+  <img src="docs/screenshots/tribe-feed.jpg" width="150" alt="See what your tribe is posting nearby" />
+  <img src="docs/screenshots/post-to-tribe.jpg" width="150" alt="Post straight to your tribe's page" />
+  <img src="docs/screenshots/place-tribes.jpg" width="150" alt="See which tribes claim the places you visit" />
+  <img src="docs/screenshots/your-map.jpg" width="150" alt="Your tribes, your places, your map" />
 </p>
 
 ## What you can do
@@ -19,12 +22,12 @@ This repository is the **native Android client** (Kotlin). It's a thin client th
 - **Explore the map** — Discover tribes, places, events, and posts around your current location.
 - **Claim territory** — Tribes claim real-world places and grow their territory on the map (the polygon / geohash system). Your territory expands as your tribe grows — no physical check-in required.
 - **Tribes** — Create or join tribes, manage members and admins, follow tribes, get recommendations, and moderate (ban / block / report).
-- **Places** — Add and follow real-world places, rate them, and browse their activity and events.
+- **Places** — Add and follow real-world places, rate them, and see which tribes claim them and what's posted there.
 - **Events** — Create events tied to a place or tribe and RSVP / attend.
 - **Feed & posts** — A location-aware feed (nearby, your tribe, per-place) with posts, comments, and reactions.
 - **Stories** — Share ephemeral stories and view nearby and tribe stories.
 - **Messaging** — Direct one-to-one chat with other users.
-- **Profiles** — User profiles with followers / following and personal activity feeds.
+- **Profiles** — User profiles with tribes, followers / following, and personal activity feeds.
 - **Notifications** — Real-time push notifications (Firebase Cloud Messaging).
 
 **Sign-in:** email / password (Firebase Auth) and Google.
